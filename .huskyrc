@@ -1,0 +1,5 @@
+{
+  "hooks": {
+     "pre-commit": "git-branch-is --not master && git-branch-is --not develop"
+  }
+}
