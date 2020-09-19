@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$culture-portal-primary: mat-palette($mat-indigo);
+$culture-portal-accent: mat-palette($mat-pink, A200, A100, A400);
+$culture-portal-warn: mat-palette($mat-red);
+
+$culture-portal-theme: mat-light-theme($culture-portal-primary, $culture-portal-accent, $culture-portal-warn);
+$culture-portal-theme-dark: mat-dark-theme($culture-portal-primary, $culture-portal-accent, $culture-portal-warn);
+
+.theme-dark {
+  @include angular-material-theme($culture-portal-theme-dark);
+}
+
+.theme-light {
+  @include angular-material-theme($culture-portal-theme);
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
