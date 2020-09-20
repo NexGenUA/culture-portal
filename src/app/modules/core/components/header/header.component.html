@@ -1,0 +1,51 @@
+<header class="header">
+  <mat-button-toggle-group
+    class="switch-menu"
+    name="fontStyle"
+    aria-label="Font Style"
+    value="en"
+    (change)="changeLanguage($event)"
+  >
+    <mat-button-toggle value="be">BE</mat-button-toggle>
+    <mat-button-toggle value="ru">RU</mat-button-toggle>
+    <mat-button-toggle value="en">EN</mat-button-toggle>
+  </mat-button-toggle-group>
+  <div>
+    <h1>{{ 'HEAD.TITLE' | translate }}</h1>
+    <mat-button-toggle-group
+      class="nav-menu"
+      name="fontStyle"
+      aria-label="Font Style"
+      [value]="(selectUrl$ | async)"
+    >
+      <mat-button-toggle
+        routerLink="/"
+        class="nav-menu__item"
+        value="/"
+      >HOME</mat-button-toggle>
+      <mat-button-toggle
+        [routerLink]="'/' + paths.SEARCH"
+        class="nav-menu__item"
+        value="/search"
+      >SEARCH</mat-button-toggle>
+      <mat-button-toggle
+        [routerLink]="'/' + paths.TEAM"
+        class="nav-menu__item"
+        value="/team"
+      >TEAM</mat-button-toggle>
+      <mat-button-toggle
+        [routerLink]="'/' + paths.WORKLOG"
+        class="nav-menu__item"
+        value="/worklog"
+      >WORKLOG</mat-button-toggle>
+      <mat-button-toggle
+        [routerLink]="'/' + paths.STYLEGUIDE"
+        class="nav-menu__item"
+        value="/styleguide"
+      >STYLEGUIDE</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <mat-slide-toggle (change)="switchTheme($event)">
+    {{ 'HEAD.SWITCH_BUTTON_TEXT' | translate }}
+  </mat-slide-toggle>
+</header>
