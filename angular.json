@@ -128,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "culture-portal"
+  "defaultProject": "culture-portal",
+  "cli": {
+    "analytics": "3232ed39-8e7a-4c27-8988-5d23d98488b4"
+  }
 }

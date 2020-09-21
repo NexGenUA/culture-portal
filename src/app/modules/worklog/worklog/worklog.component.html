@@ -1,1 +1,12 @@
-<p>worklog works!</p>
+<h2>Time spent</h2>
+<mat-card *ngFor="let item of tableData" color="primary">
+  <mat-card-header>
+    <mat-card-title>{{item.user}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-worklog-table [tableData]='item.features'></app-worklog-table>
+  </mat-card-content>
+</mat-card>
+
+<h2>Main Difficulties</h2>
+<h2>Self Evaluation</h2>
