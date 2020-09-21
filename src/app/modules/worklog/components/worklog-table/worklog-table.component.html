@@ -1,0 +1,20 @@
+<mat-table [dataSource]="dataSource">
+  <ng-container matColumnDef="feature">
+    <mat-header-cell *matHeaderCellDef> Feature </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.feature | titlecase}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="timeSpent">
+    <mat-header-cell *matHeaderCellDef> Time Spent </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.timeSpent+'h'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="startDate">
+    <mat-header-cell *matHeaderCellDef> Time Spent </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.startDate | date: 'longDate'}} </mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="endDate">
+    <mat-header-cell *matHeaderCellDef> Time Spent </mat-header-cell>
+    <mat-cell *matCellDef="let row"> {{row.endDate | date: 'longDate'}} </mat-cell>
+  </ng-container>
+  <mat-header-row *matHeaderRowDef="['feature', 'timeSpent', 'startDate', 'endDate']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['feature', 'timeSpent', 'startDate', 'endDate']"></mat-row>
+</mat-table>
