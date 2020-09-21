@@ -1,46 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { developers, MOCK_DATA, SCOPES, SCOPES_TITLES } from '../constants/constants';
 
+import { IScopeItem } from '../models/scope-item.model';
 import { IWorklogItem } from '../models/worklog-item.model';
-
-const ELEMENTS: IWorklogItem[] = [
-  {
-    feature: 'feature',
-    timeSpent: 1,
-    startDate: new Date('2020-09-20'),
-    endDate: new Date('2020-09-20'),
-  }
-];
-
-const enum developers {
-  ASADCHY = 'Pavel Asadchy',
-  FRALTSOV = 'Alexander Fraltsov',
-  RUDNIK = 'Mikita Rudnik',
-  SIDOROV = 'Alexandr Sidorov',
-  STEPOVENKO = 'Valentyn Stepovenko'
-}
-
-const MOCK_DATA = [
-  {
-    user: developers.ASADCHY,
-    features: ELEMENTS
-  },
-  {
-    user: developers.FRALTSOV,
-    features: ELEMENTS
-  },
-  {
-    user: developers.RUDNIK,
-    features: ELEMENTS
-  },
-  {
-    user: developers.SIDOROV,
-    features: ELEMENTS
-  },
-  {
-    user: developers.STEPOVENKO,
-    features: ELEMENTS
-  }
-];
 
 @Component({
   selector: 'app-worklog',
@@ -49,9 +11,41 @@ const MOCK_DATA = [
 })
 export class WorklogComponent implements OnInit {
 
-  public tableData = MOCK_DATA;
+  public tableData: {
+    user: developers,
+    features: IWorklogItem[]
+  }[] = MOCK_DATA;
+
+  public scopes: {
+    title: SCOPES_TITLES,
+    items: IScopeItem[]
+  }[] = SCOPES;
+
+  public scopesScores: number[];
+  public scopesMaxScores: number[];
+
   constructor() { }
 
   ngOnInit(): void {
+    this.scopesScores = this.scopes.map(({items}) => this.getScopeScore(items));
+    this.scopesMaxScores = this.scopes.map(({items}) => this.getMaxScopeScore(items));
+  }
+
+  public getScopeScore( scope: IScopeItem[]): number {
+    return scope
+      .filter(item => item.checked)
+      .reduce((score, item) => score + item.score, 0);
+  }
+
+  public getMaxScopeScore( scope: IScopeItem[]): number {
+    return scope.reduce((score, item) => score + item.score, 0);
+  }
+
+  public getTotalScore(): number {
+    return this.scopesScores.reduce((acc, score) => acc + score);
+  }
+
+  public getMaxTotalScore(): number {
+    return this.scopesMaxScores.reduce((acc, score) => acc + score);
   }
 }

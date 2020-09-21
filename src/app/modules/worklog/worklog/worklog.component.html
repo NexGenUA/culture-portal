@@ -1,5 +1,5 @@
 <h2>Time spent</h2>
-<mat-card *ngFor="let item of tableData" color="primary">
+<mat-card *ngFor="let item of tableData">
   <mat-card-header>
     <mat-card-title>{{item.user}}</mat-card-title>
   </mat-card-header>
@@ -8,5 +8,17 @@
   </mat-card-content>
 </mat-card>
 
-<h2>Main Difficulties</h2>
 <h2>Self Evaluation</h2>
+<mat-card >
+  <mat-card-content *ngFor="let scope of scopes; index as i">
+    <mat-card-title>
+      {{scope.title}} {{scopesScores[i]}} ({{scopesMaxScores[i]}})
+    </mat-card-title>
+    <app-scope [scope]='scope.items'></app-scope>
+  </mat-card-content>
+  <mat-card-title>
+    Total: {{getTotalScore()}} ({{getMaxTotalScore()}})
+  </mat-card-title>
+</mat-card>
+
+<h2>Main Difficulties</h2>
