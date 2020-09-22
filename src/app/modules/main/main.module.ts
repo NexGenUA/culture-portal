@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { MainComponent } from './pages/main/main.component';
 import { SharedModule } from '../../shared/shared.module';
-import { HomeComponent } from './components/home/home.component';
 import { CardComponent } from './components/card/card.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
-  declarations: [MainComponent, HomeComponent, CardComponent],
+  declarations: [MainComponent, CardComponent],
   imports: [
-    SharedModule
+    SharedModule,
+    HttpClientModule
   ]
 })
 export class MainModule { }

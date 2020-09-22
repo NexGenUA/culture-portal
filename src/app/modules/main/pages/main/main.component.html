@@ -1,1 +1,11 @@
-<p>main works!</p>
+<ul class="main">
+	<li
+		class="main__item"
+		*ngFor="let writer of writersList">
+	
+		<app-card
+			[writerCard]="writer">
+		</app-card>
+	</li>
+
+</ul>
