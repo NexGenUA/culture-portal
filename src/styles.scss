@@ -1,4 +1,4 @@
-@import '~@angular/material/theming';
+@import "~@angular/material/theming";
 @include mat-core();
 
 $culture-portal-primary: mat-palette($mat-indigo);
@@ -16,5 +16,162 @@ $culture-portal-theme-dark: mat-dark-theme($culture-portal-primary, $culture-por
   @include angular-material-theme($culture-portal-theme);
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,600;1,600&display=swap");
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.break {
+  flex-basis: 100%;
+  height: 0;
+}
+
+// Light theme replace
+
+.theme-light .mainPartHeader .mat-button-toggle-appearance-standard {
+  color: #fff;
+  transition: 0.25s;
+  background: #2b2b2b;
+
+  :hover {
+    transition: 0.25s;
+    color: #c5a15b;
+  }
+}
+.theme-light .switch-group .mat-button-toggle-appearance-standard {
+  :hover {
+    color: #fff;
+    transition: 0.25s;
+    background: #c5a15b;
+  }
+}
+.theme-light .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+  border-left: 0px;
+}
+.theme-light .mat-button-toggle-group.switch-menu {
+  font-size: 16px;
+  line-height: 1.25;
+  border: 2px solid #c5a15b;
+  border-radius: 12px;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+  transition: 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.theme-light .header .mat-button-toggle-checked {
+  color: #c5a15b;
+}
+.theme-light .switch-menu .mat-button-toggle-checked {
+  background-color: #c5a15b;
+}
+.theme-light .mat-button-toggle-group-appearance-standard {
+  border-radius: 15px;
+}
+.mat-button-toggle {
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.mainPartHeader .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  padding: 0 18px;
+}
+.switch-group .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 32px;
+  padding: 0px 10px;
+  color: #151515;
+  background-color: transparent;
+  border-color: #151515;
+}
+.switch-group .mat-button-toggle-checked .mat-button-toggle-label-content {
+  color: white;
+}
+
+// Dark theme replace
+.theme-dark .header .mainPartHeader {
+  background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiBoZWlnaHQ9IjY0cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCA2NCA2NCIgd2lkdGg9IjY0cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxwYXRoIGQ9Ik02Mi44NjksMTYuODQyaC0wLjA1N2MtMS4wOTYsMC4wMDctMS4yNjYtMC45NDUtMS4yODUtMS4zODdWOC41NDJjMC0wLjczOC0wLjU5OC0xLjMzNi0xLjMzNC0xLjMzNkg0MC40MjggIGMtNC45NTksMC02LjgwOSwxLjgzOC03LjI2OCwyLjQxNWwtMC4xMjYsMC4xNzVsLTAuMDAxLDAuMDAzbC0wLjM5MSwwLjUzNmMtMC4wMDEsMC0wLjAwMSwwLTAuMDAxLDAgIGMtMC41MjUsMC43MjEtMC45ODIsMC40MTQtMS4yMDIsMC4xNzhsLTAuNzQ4LTAuOTMzbC0wLjM3LTAuNDQ2Yy0wLjYyMi0wLjY1My0yLjI0My0xLjkyOC01LjQ1Ni0xLjkyOEgzLjgwOCAgYy0wLjczOCwwLTEuMzM2LDAuNTk4LTEuMzM2LDEuMzM2djYuODI1YzAsMS4xOTUtMC42NDksMS40MzUtMS4wNDcsMS40NzVIMS4xMjljLTAuMzI0LDAuMDItMS4wNzgsMC4yMDgtMS4wNzgsMS41OTV2MzIuNTI5ICBjMCwwLjc5OCwwLjY0NywxLjQ0NCwxLjQ0NSwxLjQ0NGgxOS4yMThjNi4xMzEsMCw4LjgwMywyLjMxMiw5LjYwNCwzLjE5OWwwLjQ1NywwLjU2NmgwLjAwMWMwLDAsMS4yMjYsMS4zODcsMi41MTgsMGwwLDAgIGwwLjI2OC0wLjMxNHYwLjAwMWwwLjAwNC0wLjAwM2wwLjM0Mi0wLjRjMC4wMS0wLjAxMiwwLjA5Mi0wLjEwNCwwLjIxMS0wLjIyNmMxLjAyMy0wLjk5NSwzLjU4LTIuODIzLDguNTgtMi44MjNoMTkuODA1ICBjMC43OTksMCwxLjQ0NS0wLjY0NiwxLjQ0NS0xLjQ0NFYxOC4xMjJDNjMuOTQ5LDE2Ljk0Niw2My4wOTgsMTYuODQ4LDYyLjg2OSwxNi44NDJ6IE01OC41NTEsNDUuODYyICBjMCwwLjY0MS0wLjUzNSwxLjE1OC0xLjIwMSwxLjE1OEg0MS4wNTVjLTUuNzk5LDAtNy45MDQsMi42Mi03LjkwNCwyLjYybC0wLjI2NywwLjM1OGwtMC4xMjUsMC4xNzNjLTAuMDAxLDAtMC4wMDEsMC0wLjAwMSwwICBjLTAuNTUzLDAuNzUxLTEuMzY2LDAuMDA2LTEuMzcsMC4wMDJsLTAuMzc1LTAuNDY5Yy0wLjI3OC0wLjMzNC0yLjQwOC0yLjY4NS03LjU2My0yLjY4NWgtMTYuOGMtMC42NjMsMC0xLjE5OS0wLjUxOC0xLjE5OS0xLjE1OCAgVjExLjE5OWMwLTAuNjQsMC41MzYtMS4xNTgsMS4xOTktMS4xNThoMTMuMDQzYzkuNzAyLDAsMTAuNjIxLDUuNTExLDEwLjY4NCw3LjExMnYyNC4xMDZjMCwxLjc1MiwwLjgzNSwyLjA4MSwxLjMwNiwyLjEyOWgwLjcwMSAgYzAuNDgtMC4wNDgsMS4yNDMtMC4zMzMsMS4yNDMtMS43VjE2Ljg0MmgtMC4wMDhjMC4wNzItMi4wMDUsMC44NTQtNi44MDIsNi42ODktNi44MDJINTcuMzVjMC42NjYsMCwxLjIwMSwwLjUxOCwxLjIwMSwxLjE1OCAgVjQ1Ljg2MnoiIGZpbGw9IiMyNDFGMjAiLz48L3N2Zz4=");
+  &:hover {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg enable-background='new 0 0 64 64' height='64px' id='Layer_1' version='1.1' viewBox='0 0 64 64' width='64px' xml:space='preserve' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3cpath d='M62.869,16.842h-0.057c-1.096,0.007-1.266-0.945-1.285-1.387V8.542c0-0.738-0.598-1.336-1.334-1.336H40.428 c-4.959,0-6.809,1.838-7.268,2.415l-0.126,0.175l-0.001,0.003l-0.391,0.536c-0.001,0-0.001,0-0.001,0 c-0.525,0.721-0.982,0.414-1.202,0.178l-0.748-0.933l-0.37-0.446c-0.622-0.653-2.243-1.928-5.456-1.928H3.808 c-0.738,0-1.336,0.598-1.336,1.336v6.825c0,1.195-0.649,1.435-1.047,1.475H1.129c-0.324,0.02-1.078,0.208-1.078,1.595v32.529 c0,0.798,0.647,1.444,1.445,1.444h19.218c6.131,0,8.803,2.312,9.604,3.199l0.457,0.566h0.001c0,0,1.226,1.387,2.518,0l0,0 l0.268-0.314v0.001l0.004-0.003l0.342-0.4c0.01-0.012,0.092-0.104,0.211-0.226c1.023-0.995,3.58-2.823,8.58-2.823h19.805 c0.799,0,1.445-0.646,1.445-1.444V18.122C63.949,16.946,63.098,16.848,62.869,16.842z M58.551,45.862 c0,0.641-0.535,1.158-1.201,1.158H41.055c-5.799,0-7.904,2.62-7.904,2.62l-0.267,0.358l-0.125,0.173c-0.001,0-0.001,0-0.001,0 c-0.553,0.751-1.366,0.006-1.37,0.002l-0.375-0.469c-0.278-0.334-2.408-2.685-7.563-2.685h-16.8c-0.663,0-1.199-0.518-1.199-1.158 V11.199c0-0.64,0.536-1.158,1.199-1.158h13.043c9.702,0,10.621,5.511,10.684,7.112v24.106c0,1.752,0.835,2.081,1.306,2.129h0.701 c0.48-0.048,1.243-0.333,1.243-1.7V16.842h-0.008c0.072-2.005,0.854-6.802,6.689-6.802H57.35c0.666,0,1.201,0.518,1.201,1.158 V45.862z' fill='%23FFF'/%3e%3c/svg%3e");
+  }
+}
+
+
+.theme-dark .mainPartHeader .mat-button-toggle-appearance-standard {
+  color: #fff;
+  transition: 0.25s;
+  background: #2b2b2b;
+
+  :hover {
+    transition: 0.25s;
+    color: #c5a15b;
+  }
+}
+.theme-dark .switch-group .mat-button-toggle-appearance-standard {
+  :hover {
+    color: #fff;
+    transition: 0.25s;
+    background: #c5a15b;
+  }
+}
+.theme-dark .mat-button-toggle-group-appearance-standard .mat-button-toggle + .mat-button-toggle {
+  border-left: 0px;
+}
+.theme-dark .mat-button-toggle-group.switch-menu {
+  font-size: 16px;
+  line-height: 1.25;
+  border: 2px solid #c5a15b;
+  border-radius: 12px;
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+  transition: 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+.theme-dark .header .mat-button-toggle-checked {
+  color: #c5a15b;
+}
+.theme-dark .switch-menu .mat-button-toggle-checked {
+  background-color: #c5a15b;
+}
+.theme-dark .mat-button-toggle-group-appearance-standard {
+  border-radius: 15px;
+}
+.mat-button-toggle {
+  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.mainPartHeader .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  padding: 0 18px;
+}
+.switch-group .mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+  line-height: 32px;
+  padding: 0px 10px;
+  color: #151515;
+  background-color: transparent;
+  border-color: #151515;
+}
+.switch-group .mat-button-toggle-checked .mat-button-toggle-label-content {
+  color: white;
+}
