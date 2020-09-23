@@ -140,6 +140,21 @@ export const ELEMENTS: IWorklogItem[] = [
   }
 ];
 
+export const spendTimeSidorov: IWorklogItem[] = [
+  {
+    feature: 'disign',
+    timeSpent: 4,
+    startDate: new Date('2020-09-19'),
+    endDate: new Date('2020-09-22'),
+  },
+  {
+    feature: 'styleguid',
+    timeSpent: 0,
+    startDate: new Date('2020-09-19'),
+    endDate: new Date('2020-09-22'),
+  }
+];
+
 export const enum developers {
   ASADCHY = 'Pavel Asadchy',
   FRALTSOV = 'Alexander Fraltsov',
@@ -163,7 +178,7 @@ export const MOCK_DATA: {user: developers, features: IWorklogItem[]}[] = [
   },
   {
     user: developers.SIDOROV,
-    features: ELEMENTS
+    features: spendTimeSidorov
   },
   {
     user: developers.STEPOVENKO,
