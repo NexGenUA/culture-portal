@@ -1,6 +1,8 @@
+@import "../../../../../styles-variables.scss";
+
 :host{
   display: block;
-  max-width: 1280px;
+  max-width: $max-width-content;
   margin: 0 auto;
 }
 
