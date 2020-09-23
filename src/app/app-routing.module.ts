@@ -10,7 +10,15 @@ import { paths } from './constants/constants';
 import { StyleguideComponent } from './modules/styleguide/pages/styleguide/styleguide.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent, pathMatch: 'full'},
+  {
+    path: '',
+    redirectTo: 'main',
+    pathMatch: 'full'
+  },
+  {
+    path: 'main',
+    loadChildren: () => import('./modules/main/main.module').then(m => m.MainModule)
+  },
   {
     path: paths.SEARCH,
     component: SearchComponent,

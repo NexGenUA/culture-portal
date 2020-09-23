@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { IWritter, Writer } from 'src/app/shared/models/writer.model';
 import { map } from 'rxjs/operators';
+import { DetailedService } from '../../services/detailed.service';
+import { NavigateService } from 'src/app/shared/services/navigate.service';
 
 @Component({
   selector: 'app-main',
@@ -15,7 +17,9 @@ export class MainComponent implements OnInit {
 
   public writersList: Writer[] = [];
 
-  constructor(private httpCLient: HttpClient) { }
+  constructor(private httpCLient: HttpClient,
+              public detailedService: DetailedService,
+              private navigateService: NavigateService) { }
 
   ngOnInit(): void {
     this.getWriters();
@@ -31,5 +35,10 @@ export class MainComponent implements OnInit {
         })
       )
     .subscribe(response => this.writersList = response);
+  }
+
+  public selectItem(clickedCard: Writer): void {
+    this.detailedService.initDetailedCard(clickedCard);
+    this.navigateService.navigateTo(['/main', this.detailedService.selectedCard.surname]);
   }
 }
