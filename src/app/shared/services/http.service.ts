@@ -31,12 +31,13 @@ export class HttpService {
     return this.caching();
   }
 
-  public getCardById(id: number): Promise<IWritter[]> {
+  public getCardById(id: number): Promise<IWritter> {
     // get writer card by ID
-    return this.base
-      .ref(id - 1)
-      .once('value')
-      .then((item) => Array(1).fill(item.val()));
+    return this.caching().then(base => {
+      let searchedCard: IWritter;
+      base.forEach(card => card.id === id ? searchedCard = card : null);
+      return searchedCard;
+    });
   }
 
   public getCardByName(searchStr): Promise<IWritter[]> {
@@ -95,7 +96,7 @@ export class HttpService {
     this.base
       .ref()
       .once('value')
-      .then((base) => (length = base.val().length))
+      .then((base) => newCardIndex = base.val().length)
       .then(() => this.base.ref(newCardIndex).set(card));
   }
 }
