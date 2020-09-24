@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +11,9 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { metaReducers, reducers } from './store/reducers';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './modules/core/core.module';
+
+import ru from '@angular/common/locales/ru';
+import { registerLocaleData } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,13 @@ import { CoreModule } from './modules/core/core.module';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: 'ru' }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+    [ru].forEach(registerLocaleData);
+  }
+
+}
