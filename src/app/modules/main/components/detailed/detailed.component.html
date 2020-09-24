@@ -1,1 +1,132 @@
-<p>detailed works!</p>
+<mat-card class="detailed">
+
+  <mat-icon
+    class="detailed__close"
+    (click)="returnToMain()">
+      close
+  </mat-icon>
+
+  <div class="detailed__file">
+
+    <div class="detailed__img-box">
+      <img mat-card-image
+        src="{{ detailedService.selectedCard.gallery[0].img }}"
+        alt="{{ detailedService.selectedCard.gallery[0].alt }}">
+    </div>
+    
+    <div class="detailed__info">
+
+			<mat-card-title class="detailed__title">
+				{{ detailedService.selectedCard.surname }}
+        {{ detailedService.selectedCard.name }}
+        {{ detailedService.selectedCard.patronymic }}
+			</mat-card-title>
+
+      <div class="detailed__facts">
+
+        <div class="detailed__dates">
+          <div class="detailed__item">
+            <mat-card-subtitle class="detailed__subtitle">Дата рождения:</mat-card-subtitle>
+            <p>
+              {{ detailedService.selectedCard.birthdate | date:"longDate":'ru' }}
+            </p>    
+          </div>
+  
+          <div class="detailed__item" *ngIf="detailedService.selectedCard.deathDate">
+            <mat-card-subtitle class="detailed__subtitle">Дата смерти:</mat-card-subtitle>
+            <p>
+              {{ detailedService.selectedCard.deathDate | date:"longDate":'ru' }}	  
+            </p>    
+          </div>  
+        </div>
+
+        <div class="detailed__item">
+          <mat-card-subtitle class="detailed__subtitle">Литературные произведения:</mat-card-subtitle>
+          <ul class="detailed__books-list">
+            <li
+              class="detailed__book"
+              *ngFor="let book of detailedService.selectedCard.books">
+              {{ book.title }}, {{ book.year }}
+            </li>
+          </ul>    
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="detailed__item">
+    <mat-card-subtitle class="detailed__subtitle">Об авторе:</mat-card-subtitle>
+    <p>
+      {{ detailedService.selectedCard.shortDescription }}
+    </p>
+  </div>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelTimelineOpenState = true"
+                         (closed)="panelTimelineOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Значимые события
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelTimelineOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="detailed__books-list">
+        <li
+          class="detailed__book"
+          *ngFor="let happening of detailedService.selectedCard.timeline">
+          {{ happening.year }}: {{ happening.event }}
+        </li>
+      </ul>    
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelGalleryOpenState = true"
+                         (closed)="panelGalleryOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Галлерея
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelGalleryOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="detailed__gallery">
+        <li
+          class="detailed__photo"
+          *ngFor="let photo of detailedService.selectedCard.gallery">
+          <a href="{{ photo.img }}" target="_blank">
+            <img src="{{ photo.img }}" alt="{{ photo.alt }}">
+          </a>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion>
+    <mat-expansion-panel (opened)="panelVideoOpenState = true"
+                         (closed)="panelVideoOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Видео-галлерея
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelVideoOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list role="list" class="detailed__video-gallery">
+        <mat-list-item role="listitem"
+          class="detailed__video"
+          *ngFor="let video of detailedService.selectedCard.videos">
+          <a href="{{ video.link }}" target="_blank">
+            {{ video.description }}
+          </a>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+	  
+</mat-card>
