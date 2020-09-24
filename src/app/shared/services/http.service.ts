@@ -33,9 +33,9 @@ export class HttpService {
 
   public getCardById(id: number): Promise<IWritter> {
     // get writer card by ID
-    return this.caching().then(base => {
+    return this.getFullBase().then((base) => {
       let searchedCard: IWritter;
-      base.forEach(card => card.id === id ? searchedCard = card : null);
+      base.forEach((card) => (card.id === id ? (searchedCard = card) : null));
       return searchedCard;
     });
   }
@@ -55,7 +55,7 @@ export class HttpService {
       );
     }
 
-    return this.caching().then((base) =>
+    return this.getFullBase().then((base) =>
       base.filter((card) => filterReq(card, searchReq))
     );
   }
@@ -73,19 +73,19 @@ export class HttpService {
       return includes;
     }
 
-    return this.caching().then((base) =>
+    return this.getFullBase().then((base) =>
       base.filter((card) => filterReq(card, searchReq))
     );
   }
 
-  public getRandomCard(): Promise<IWritter[]> {
+  public getRandomCard(): Promise<IWritter> {
     // get random writer card
-    return this.caching().then((base) => {
+    return this.getFullBase().then((base) => {
       const baseValue: IWritter[] = base;
       const randomCardIndex = Math.round(
         (baseValue.length - 1) * Math.random()
       );
-      return Array(1).fill(baseValue[randomCardIndex]);
+      return baseValue[randomCardIndex];
     });
   }
 
