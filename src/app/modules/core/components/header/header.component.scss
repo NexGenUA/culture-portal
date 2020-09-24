@@ -1,4 +1,4 @@
-@import "../../../../../styles-variables.scss";
+@import "../../../../shared/styles-variables";
 
 :host {
   .header {
@@ -72,6 +72,7 @@
         margin-bottom: 20px;
         vertical-align: top;
         font-size: 32px;
+        line-height: 18px;
       }
 
       @include mobile {
@@ -124,7 +125,7 @@
         border-radius: 12px;
         font-family: $font_family_switch_menu;
         font-weight: 600;
-        letter-spacing: 1;
+        letter-spacing: 1rem;
         text-transform: uppercase;
         white-space: nowrap;
         text-overflow: ellipsis;
