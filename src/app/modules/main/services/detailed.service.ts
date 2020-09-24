@@ -12,7 +12,6 @@ export class DetailedService {
 
   public initDetailedCard(clickedCard: Writer): void {
     this.selectedCard = clickedCard;
-    console.log(this.selectedCard);
   }
 
 }

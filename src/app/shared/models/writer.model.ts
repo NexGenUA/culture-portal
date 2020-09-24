@@ -33,9 +33,9 @@ export interface IWritter {
   map: string[];
 }
 
-export class Writer {
+export class Writer implements IWritter {
   constructor(
-    public id: string,
+    public id: number,
     public name: string,
     public surname: string,
     public birthdate: string,
