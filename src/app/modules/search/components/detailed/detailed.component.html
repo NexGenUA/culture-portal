@@ -73,13 +73,45 @@
           {{panelTimelineOpenState ? 'Закрыть' : 'Развернуть'}}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <ul class="detailed__books-list">
+
+      <mgl-timeline
+        [toggle]="toggle"
+        [alternate]="alternate"
+        [side]="side">
+
+        <mgl-timeline-entry
+          *ngFor="let entry of entries">
+
+            <mgl-timeline-entry-header
+              (click)="onHeaderClick($event)">
+              {{ entry.header }}
+            </mgl-timeline-entry-header>
+
+            <mgl-timeline-entry-content
+              [expandAnimationTiming]="contentAnimation ? '200ms ease' : '0ms'"
+              [collapseAnimationTiming]="contentAnimation ? '100ms ease' : '0ms'">
+              {{ entry.content }}
+            </mgl-timeline-entry-content>
+            
+            <mgl-timeline-entry-dot
+              [size]="size"
+              style="text-align: center; background-color: lightblue; color: darkblue"
+              (click)="onDotClick($event)"
+              [expandAnimationTiming]="dotAnimation ? '200ms ease' : '0ms'"
+              [collapseAnimationTiming]="dotAnimation ? '100ms ease' : '0ms'">              
+            </mgl-timeline-entry-dot>
+
+            <mgl-timeline-entry-side>2018</mgl-timeline-entry-side>
+        </mgl-timeline-entry>
+      </mgl-timeline>
+
+      <!-- <ul class="detailed__books-list">
         <li
           class="detailed__book"
           *ngFor="let happening of detailedService.selectedCard.timeline">
           {{ happening.year }}: {{ happening.event }}
         </li>
-      </ul>    
+      </ul>     -->
     </mat-expansion-panel>
   </mat-accordion>
 
@@ -128,6 +160,13 @@
       </mat-list>
     </mat-expansion-panel>
   </mat-accordion>
+
+  <!-- <mgl-timeline>
+    <mgl-timeline-entry>
+        <mgl-timeline-entry-header>Header</mgl-timeline-entry-header>
+        <mgl-timeline-entry-content>Content</mgl-timeline-entry-content>
+    </mgl-timeline-entry>
+  </mgl-timeline> -->
 
   <mat-card-actions>
 	  <button mat-raised-button color="accent"

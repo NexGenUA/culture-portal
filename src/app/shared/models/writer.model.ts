@@ -1,4 +1,4 @@
-interface ITimelineItem {
+export interface ITimelineItem {
   year: number;
   event: string;
 }
