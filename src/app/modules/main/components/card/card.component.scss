@@ -11,6 +11,10 @@
 		overflow: hidden;
 	}
 
+	&__wrapper-img a {
+		cursor: pointer;
+	}
+
 	&__content p {
 		overflow: hidden;
 		text-overflow: ellipsis;

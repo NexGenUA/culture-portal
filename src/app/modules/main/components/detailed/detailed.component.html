@@ -62,7 +62,7 @@
     </p>
   </div>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="detailedService.selectedCard.timeline.length">
     <mat-expansion-panel (opened)="panelTimelineOpenState = true"
                          (closed)="panelTimelineOpenState = false">
       <mat-expansion-panel-header>
@@ -83,7 +83,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="detailedService.selectedCard.gallery.length">
     <mat-expansion-panel (opened)="panelGalleryOpenState = true"
                          (closed)="panelGalleryOpenState = false">
       <mat-expansion-panel-header>
@@ -106,7 +106,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <mat-accordion>
+  <mat-accordion *ngIf="detailedService.selectedCard.videos.length">
     <mat-expansion-panel (opened)="panelVideoOpenState = true"
                          (closed)="panelVideoOpenState = false">
       <mat-expansion-panel-header>
@@ -128,5 +128,12 @@
       </mat-list>
     </mat-expansion-panel>
   </mat-accordion>
+
+  <mat-card-actions>
+	  <button mat-raised-button color="accent"
+		  (click)="returnToMain()">
+		  Закрыть
+		</button>
+	</mat-card-actions>
 	  
 </mat-card>
