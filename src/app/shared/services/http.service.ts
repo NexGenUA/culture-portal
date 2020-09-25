@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { provideRoutes } from '@angular/router';
 import * as firebase from 'firebase';
 import { IWritter } from '../models/writer.model';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HttpService {
   public base;
   public baseCache;
