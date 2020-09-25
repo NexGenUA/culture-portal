@@ -1,0 +1,9 @@
+@import "shared/styles-variables";
+
+.main {
+  display: flex;
+  max-width: $max-width-content;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+}
