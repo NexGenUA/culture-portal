@@ -1,4 +1,6 @@
 <app-header
   (switcher)="switchTheme($event)"
 ></app-header>
-<router-outlet></router-outlet>
+<main [@routeAnimations]="(path$ | async)" class="main">
+  <router-outlet></router-outlet>
+</main>

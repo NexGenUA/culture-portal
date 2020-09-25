@@ -1,0 +1,62 @@
+@import "../../../../shared/styles-variables";
+
+:host{
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/********** Start Button Style  **********/
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+
+/********** Start Card Style  **********/
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+/********** Table Card Style  **********/
+
+table {
+  width: 100%;
+}
+
+/********** Toolbar Card Style  **********/
+.example-spacer {
+  flex: 1 1 auto;
+}
