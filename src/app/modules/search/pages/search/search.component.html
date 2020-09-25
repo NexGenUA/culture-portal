@@ -8,3 +8,9 @@
   </mat-form-field>
   <mat-slide-toggle (click)="toggleSearchInstance()"></mat-slide-toggle>
 </form>
+
+<ul>
+  <li *ngFor="let writer of writers">
+    {{writer.name}} {{writer.patronymic}} {{writer.surname}}
+  </li>
+</ul>
