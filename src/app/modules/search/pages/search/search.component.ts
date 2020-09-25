@@ -5,8 +5,7 @@ import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
-const QUERY_MIN_LENGTH = 1;
-const DEBOUNCE_TIME = 1000;
+const DEBOUNCE_TIME = 300;
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -33,7 +32,6 @@ export class SearchComponent implements OnInit {
 
     this.searchString = this.form.get('searchString').valueChanges
     .pipe(
-      filter(s => s.length >= QUERY_MIN_LENGTH),
       debounceTime(DEBOUNCE_TIME)
       )
     .subscribe(
