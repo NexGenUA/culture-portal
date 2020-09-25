@@ -1,7 +1,10 @@
-<mat-form-field class="example-form-field">
-  <mat-label>search author</mat-label>
-  <input matInput type="search" [(ngModel)]="value">
-  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-    <mat-icon>close</mat-icon>
-  </button>
-</mat-form-field>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>search author by {{searchInstance}}</mat-label>
+    <input matInput type="search" [(ngModel)]="value" formControlName="searchString">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-slide-toggle (click)="toggleSearchInstance()"></mat-slide-toggle>
+</form>
