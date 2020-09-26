@@ -1,4 +1,5 @@
 @import "~@angular/material/theming";
+@import '~angular-mgl-timeline/theme';
 @include mat-core();
 
 @import 'app/shared/styles-variables';
@@ -16,6 +17,7 @@ $culture-portal-typography: mat-typography-config(
   $body-1: mat-typography-level(16px, 24px, 500)
 );
 
+@include mgl-timeline-theme($culture-portal-theme);
 
 .theme-dark {
   @include angular-material-theme($culture-portal-theme-dark);
