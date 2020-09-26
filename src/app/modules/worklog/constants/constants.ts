@@ -20,7 +20,7 @@ const MIN_SCOPE: IScopeItem[] = [
   },
   {
     title: 'Page with list of authors contains search widget',
-    checked: false,
+    checked: true,
     score: 10
   },
   {
@@ -33,7 +33,7 @@ const MIN_SCOPE: IScopeItem[] = [
 const NORMAL_SCOPE: IScopeItem[] = [
   {
     title: 'Portal has page with styleguide',
-    checked: false,
+    checked: true,
     score: 20
   },
   {
@@ -48,7 +48,7 @@ const NORMAL_SCOPE: IScopeItem[] = [
   },
   {
     title: 'Author\'s page contains timeline',
-    checked: false,
+    checked: true,
     score: 10
   },
   {
@@ -58,7 +58,7 @@ const NORMAL_SCOPE: IScopeItem[] = [
   },
   {
     title: 'Author\'s page contains photo gallery',
-    checked: false,
+    checked: true,
     score: 20
   },
   {
@@ -68,7 +68,7 @@ const NORMAL_SCOPE: IScopeItem[] = [
   },
   {
     title: 'Design (typography, icons, colors, links + buttons + input, ui components are styled)',
-    checked: false,
+    checked: true,
     score: 20
   },
   {
@@ -96,7 +96,7 @@ const EXTRA_SCOPE: IScopeItem[] = [
   },
   {
     title: 'Contentful / netlify cms / other cms is used for content management',
-    checked: false,
+    checked: true,
     score: 10
   },
   {
@@ -130,58 +130,129 @@ export const SCOPES: {title: SCOPES_TITLES, items: IScopeItem[]}[] = [
     items: EXTRA_SCOPE
   }
 ];
-
-export const ELEMENTS: IWorklogItem[] = [
-  {
-    feature: 'feature',
-    timeSpent: 1,
-    startDate: new Date('2020-09-20'),
-    endDate: new Date('2020-09-20'),
-  }
-];
-
-export const spendTimeSidorov: IWorklogItem[] = [
-  {
-    feature: 'disign',
-    timeSpent: 4,
-    startDate: new Date('2020-09-19'),
-    endDate: new Date('2020-09-22'),
-  },
-  {
-    feature: 'styleguid',
-    timeSpent: 0,
-    startDate: new Date('2020-09-19'),
-    endDate: new Date('2020-09-22'),
-  }
-];
-
-export const enum developers {
+export enum developersNames {
   ASADCHY = 'Pavel Asadchy',
   FRALTSOV = 'Alexander Fraltsov',
   RUDNIK = 'Mikita Rudnik',
   SIDOROV = 'Alexandr Sidorov',
   STEPOVENKO = 'Valentyn Stepovenko'
 }
+const developers: { [key: string]: developersNames } = {
+  ASADCHY: developersNames.ASADCHY,
+  FRALTSOV: developersNames.FRALTSOV,
+  RUDNIK: developersNames.RUDNIK,
+  SIDOROV: developersNames.SIDOROV,
+  STEPOVENKO: developersNames.STEPOVENKO
+};
 
-export const MOCK_DATA: {user: developers, features: IWorklogItem[]}[] = [
-  {
-    user: developers.ASADCHY,
-    features: ELEMENTS
-  },
-  {
-    user: developers.FRALTSOV,
-    features: ELEMENTS
-  },
-  {
-    user: developers.RUDNIK,
-    features: ELEMENTS
-  },
-  {
-    user: developers.SIDOROV,
-    features: spendTimeSidorov
-  },
-  {
-    user: developers.STEPOVENKO,
-    features: ELEMENTS
-  }
-];
+const features = {
+  ASADCHY: [
+    {
+      feature: 'Markup for search page & cards',
+      timeSpent: 3,
+      startDate: new Date('2020-09-23'),
+      endDate: new Date('2020-09-24'),
+    },
+    {
+      feature: 'Routing & services',
+      timeSpent: 2,
+      startDate: new Date('2020-09-23'),
+      endDate: new Date('2020-09-24'),
+    },
+    {
+      feature: 'Markup for detailed page, image gallery',
+      timeSpent: 4,
+      startDate: new Date('2020-09-24'),
+      endDate: new Date('2020-09-25'),
+    },
+    {
+      feature: 'Setup expansion panels, timeline',
+      timeSpent: 4,
+      startDate: new Date('2020-09-24'),
+      endDate: new Date('2020-09-25'),
+    },
+  ],
+  FRALTSOV: [
+    {
+      feature: 'Collect information about writers',
+      timeSpent: 8,
+      startDate: new Date('2020-09-19'),
+      endDate: new Date('2020-09-21'),
+    },
+    {
+      feature: 'Implement worklog page',
+      timeSpent: 2.5,
+      startDate: new Date('2020-09-21'),
+      endDate: new Date('2020-09-21'),
+    },
+    {
+      feature: 'Fix search page',
+      timeSpent: 3,
+      startDate: new Date('2020-09-24'),
+      endDate: new Date('2020-09-26'),
+    },
+    {
+      feature: 'Filling out worklog',
+      timeSpent: 1,
+      startDate: new Date('2020-09-22'),
+      endDate: new Date('2020-09-26'),
+    },
+  ],
+  RUDNIK: [
+    {
+      feature: 'Firebase connect',
+      timeSpent: 2,
+      startDate: new Date('2020-09-20'),
+      endDate: new Date('2020-09-22'),
+    },
+    {
+      feature: 'Implemented services',
+      timeSpent: 4,
+      startDate: new Date('2020-09-20'),
+      endDate: new Date('2020-09-23'),
+    },
+  ],
+  SIDOROV: [
+    {
+      feature: 'Imlemented design',
+      timeSpent: 4,
+      startDate: new Date('2020-09-19'),
+      endDate: new Date('2020-09-22'),
+    },
+    {
+      feature: 'Imlemented styleguide page',
+      timeSpent: 1,
+      startDate: new Date('2020-09-20'),
+      endDate: new Date('2020-09-23'),
+    },
+  ],
+  STEPOVENKO: [
+    {
+      feature: 'Set up project',
+      timeSpent: 3,
+      startDate: new Date('2020-09-19'),
+      endDate: new Date('2020-09-21'),
+    },
+    {
+      feature: 'Created initial structure',
+      timeSpent: 3,
+      startDate: new Date('2020-09-19'),
+      endDate: new Date('2020-09-21'),
+    },
+    {
+      feature: 'Implemented team page',
+      timeSpent: 2,
+      startDate: new Date('2020-09-24'),
+      endDate: new Date('2020-09-27'),
+    },
+  ]
+};
+
+export const WORKLOG_DATA: {
+  user: developersNames,
+  features: IWorklogItem[]
+}[] = ['ASADCHY', 'FRALTSOV', 'RUDNIK', 'SIDOROV', 'STEPOVENKO']
+  .map( (name) => ({
+    user: developers[name],
+    features: features[name]
+  }));

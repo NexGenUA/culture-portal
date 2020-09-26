@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { developers, MOCK_DATA, SCOPES, SCOPES_TITLES } from '../constants/constants';
+import { developersNames, SCOPES, SCOPES_TITLES, WORKLOG_DATA } from '../constants/constants';
 
 import { IScopeItem } from '../models/scope-item.model';
 import { IWorklogItem } from '../models/worklog-item.model';
@@ -12,9 +12,9 @@ import { IWorklogItem } from '../models/worklog-item.model';
 export class WorklogComponent implements OnInit {
 
   public tableData: {
-    user: developers,
+    user: developersNames,
     features: IWorklogItem[]
-  }[] = MOCK_DATA;
+  }[] = WORKLOG_DATA;
 
   public scopes: {
     title: SCOPES_TITLES,
