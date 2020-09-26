@@ -1,0 +1,109 @@
+.detailed {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: 90%;
+	max-width: 1400px;
+	margin: 20px auto;
+
+	&__close {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		cursor: pointer;
+	}
+
+	&__file {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	
+	&__img-box {
+		flex: 0 0 300px;
+		overflow: hidden;
+		margin-right: 10px;
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	&__title {
+		margin-bottom: 32px;
+		font-size: 2rem;
+		font-weight: 600;
+	}
+
+	&__facts {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__dates {
+		display: flex;
+		flex-direction: column;
+		flex: 0 1 220px;
+	}
+
+	&__item {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__subtitle {
+		flex: 0 0 150px;
+	}
+
+	&__books-list {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__book {
+		margin-bottom: 4px;
+	}
+
+	&__gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin: 12px 0 0;
+		padding: 0;
+		list-style: none;
+	}
+
+	&__photo {
+		height: 300px;
+		width: 400px;
+		margin: 10px;
+	}
+
+	&__photo a {
+		display: inline-block;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		border-radius: 10px;
+	}
+
+	&__photo img {
+		object-fit: contain;
+		height: 100%;
+	}
+}
+
+.mat-card-content {
+	display: flex;
+}
+
+.mat-accordion {
+	margin-bottom: 12px;
+}
+
+.mat-card-actions {
+	margin: 0;
+}

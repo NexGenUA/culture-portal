@@ -1,9 +1,11 @@
 import { IWritter } from './../../../../shared/models/writer.model';
 import { HttpService } from './../../../../shared/services/http.service';
-import { filter, debounceTime } from 'rxjs/operators';
+import { debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { NavigateService } from 'src/app/shared/services/navigate.service';
+import { DetailedService } from '../../services/detailed.service';
 
 const DEBOUNCE_TIME = 300;
 @Component({
@@ -19,7 +21,10 @@ export class SearchComponent implements OnInit {
   public searchString: Subscription;
   public writers: IWritter[] = [];
 
-  constructor(public httpService: HttpService) { }
+  constructor(
+    public httpService: HttpService,
+    public detailedService: DetailedService,
+    private navigateService: NavigateService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -45,7 +50,7 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  public toggleSearchInstance = () => {
+  public toggleSearchInstance = (): void => {
     if (this.searchInstance === 'name') {
       this.searchInstance = 'address';
     } else {
@@ -53,4 +58,8 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  public selectItem(clickedCard: IWritter): void {
+    this.detailedService.initDetailedCard(clickedCard);
+    this.navigateService.navigateTo(['/search', this.detailedService.selectedCard.surname]);
+  }
 }

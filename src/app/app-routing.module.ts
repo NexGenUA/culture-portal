@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from './modules/main/pages/main/main.component';
-import { SearchComponent } from './modules/search/pages/search/search.component';
+import { HomeComponent } from './modules/main/pages/home/home.component';
 import { TeamComponent } from './modules/team/pages/team/team.component';
 import { WorklogComponent } from './modules/worklog/worklog/worklog.component';
 import { WritersComponent } from './modules/writers/pages/writers/writers.component';
@@ -10,10 +9,18 @@ import { paths } from './constants/constants';
 import { StyleguideComponent } from './modules/styleguide/pages/styleguide/styleguide.component';
 
 const routes: Routes = [
-  {path: '', component: MainComponent, pathMatch: 'full'},
+  {
+    path: '',
+    component: HomeComponent,
+    // redirectTo: 'home',
+    pathMatch: 'full'
+  },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent
+  // },
   {
     path: paths.SEARCH,
-    component: SearchComponent,
     loadChildren: () => import('./modules/search/search.module').then(m => m.SearchModule)
   },
   {

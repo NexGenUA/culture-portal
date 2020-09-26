@@ -28,6 +28,7 @@ export class HttpService {
   }
 
   public getFullBase(): Promise<IWritter[]> {
+    console.log(this.caching);
     // get full writers base
     return this.caching();
   }

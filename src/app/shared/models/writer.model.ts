@@ -1,4 +1,4 @@
-interface ITimelineItem {
+export interface ITimelineItem {
   year: number;
   event: string;
 }
@@ -33,4 +33,39 @@ export interface IWritter {
   gallery: IImage[];
   videos: IVideo[];
   map: string[];
+}
+
+export class Writer implements IWritter {
+  constructor(
+    public id: number,
+    public name: string,
+    public surname: string,
+    public birthdate: string,
+    public deathDate: string,
+    public shortDescription: string,
+    public timeline: ITimelineItem[],
+    public books: IBook[],
+    public gallery: IImage[],
+    public videos: IVideo[],
+    public map: string[],
+    public patronymic?: string
+  ) {}
+
+  public static fromJSON(item: any): Writer {
+    return Boolean(item)
+    ? new Writer (
+      item.id,
+      item.name,
+      item.surname,
+      item.birthdate,
+      item.deathDate,
+      item.shortDescription,
+      item.timeline,
+      item.books,
+      item.gallery,
+      item.videos,
+      item.map,
+      item.patronymic)
+    : null;
+  }
 }
