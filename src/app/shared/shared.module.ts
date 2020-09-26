@@ -16,7 +16,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MglTimelineModule } from 'angular-mgl-timeline';
 
 @NgModule({
   declarations: [],
@@ -37,7 +37,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSlideToggleModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MglTimelineModule
   ],
   exports: [
     CommonModule,
@@ -56,7 +57,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSlideToggleModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MglTimelineModule
   ]
 })
 export class SharedModule { }

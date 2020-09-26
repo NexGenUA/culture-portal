@@ -1,1 +1,12 @@
-<p>search works!</p>
+<ul class="main">
+	<li
+		class="main__item"
+		*ngFor="let writer of writersList">
+	
+		<app-card
+			[writerCard]="writer"
+			(selectedCard)="selectItem($event)">
+		</app-card>
+	</li>
+
+</ul>
