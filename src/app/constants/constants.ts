@@ -9,6 +9,13 @@ export enum searchInstances {
   ADDRESS = 'address'
 }
 
+export const searchParametersArrays: {[key: string]: string[]} = {
+  NAME: ['name', 'surname'],
+  ADDRESS: ['city', 'country']
+};
+
+export const firebaseURL = 'https://writers-project-b9a49.firebaseio.com/';
+
 export enum paths {
   WRITERS = 'writers',
   WRITER_ID = 'writerId',
