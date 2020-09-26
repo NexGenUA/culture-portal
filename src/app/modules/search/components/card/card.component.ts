@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IWritter, Writer } from 'src/app/shared/models/writer.model';
+import { IWritter } from 'src/app/shared/models/writer.model';
 
 @Component({
   selector: 'app-card',
@@ -9,10 +9,10 @@ import { IWritter, Writer } from 'src/app/shared/models/writer.model';
 export class CardComponent implements OnInit {
 
   @Input()
-  writerCard: Writer;
+  writerCard: IWritter;
 
   @Output()
-  public selectedCard: EventEmitter<Writer> = new EventEmitter<Writer>();
+  public selectedCard: EventEmitter<IWritter> = new EventEmitter<IWritter>();
 
 
   constructor() { }

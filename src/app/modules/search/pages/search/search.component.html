@@ -1,12 +1,19 @@
-<ul class="main">
-	<li
-		class="main__item"
-		*ngFor="let writer of writersList">
-	
-		<app-card
-			[writerCard]="writer"
-			(selectedCard)="selectItem($event)">
-		</app-card>
-	</li>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>search author by {{searchInstance}}</mat-label>
+    <input matInput type="search" [(ngModel)]="value" formControlName="searchString">
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-slide-toggle (click)="toggleSearchInstance()"></mat-slide-toggle>
+</form>
 
+<ul class="main">
+  <li class="main__item" *ngFor="let writer of writers">
+    <app-card
+      [writerCard]="writer"
+      (selectedCard)="selectItem($event)">
+    </app-card>
+  </li>
 </ul>

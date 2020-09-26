@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
+import { provideRoutes } from '@angular/router';
 import * as firebase from 'firebase';
 import { IWritter } from '../models/writer.model';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HttpService {
   public base;
   public baseCache;
@@ -27,7 +28,6 @@ export class HttpService {
   }
 
   public getFullBase(): Promise<IWritter[]> {
-    console.log(this.caching);
     // get full writers base
     return this.caching();
   }
@@ -41,24 +41,48 @@ export class HttpService {
     });
   }
 
-  public getCardByName(searchStr): Promise<IWritter[]> {
+  private filterOnParams = (
+    item: IWritter,
+    searchValue: string,
+    params: string[]): boolean => {
+      return params.some(
+          param => searchValue.includes(item[param].toLowerCase()) ||
+          item[param].toLowerCase().includes(searchValue)
+        );
+  }
+
+  public getCardByName(searchStr: string): Promise<IWritter[]> {
     // get writer card by name independenly of order
     const searchReq: string = searchStr.toLowerCase();
-    function filterReq(item: IWritter, request: string): boolean {
-      const name: string = item.name.toLowerCase();
-      const surname = item.surname.toLowerCase();
-      const patronymic = item.patronymic.toLowerCase();
-      return (
-        request.includes(name) ||
-        request.includes(surname) ||
-        request.includes(patronymic) ||
-        (name + surname + patronymic).includes(searchReq)
-      );
-    }
+    const nameParams: string[] = ['name', 'surname'];
 
     return this.getFullBase().then((base) =>
-      base.filter((card) => filterReq(card, searchReq))
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchReq,
+        nameParams
+      ))
     );
+  }
+
+  public getCardByAddress(searchStr: string): Promise<IWritter[]> {
+    // get writer card by name independenly of order
+    const searchReq: string = searchStr.toLowerCase();
+    const addressParams: string[] = ['city', 'country'];
+
+    return this.getFullBase().then((base) =>
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchReq,
+        addressParams
+      ))
+    );
+  }
+
+  public getCardByParam(searchString: string, param: 'name' | 'address'): Promise<IWritter[]>{
+    return param === 'name' ?
+      this.getCardByName(searchString) :
+      this.getCardByAddress(searchString);
   }
 
   public getCardByBook(book: string): Promise<IWritter[]> {

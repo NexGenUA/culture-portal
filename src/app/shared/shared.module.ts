@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -22,6 +23,8 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
   declarations: [],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatCardModule,
@@ -42,6 +45,8 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
   ],
   exports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatCardModule,
