@@ -51,7 +51,7 @@ export class HttpService {
         );
   }
 
-  public getCardByName(searchStr): Promise<IWritter[]> {
+  public getCardByName(searchStr: string): Promise<IWritter[]> {
     // get writer card by name independenly of order
     const searchReq: string = searchStr.toLowerCase();
     const nameParams: string[] = ['name', 'surname'];
@@ -65,7 +65,7 @@ export class HttpService {
     );
   }
 
-  public getCardByAddress(searchStr): Promise<IWritter[]> {
+  public getCardByAddress(searchStr: string): Promise<IWritter[]> {
     // get writer card by name independenly of order
     const searchReq: string = searchStr.toLowerCase();
     const addressParams: string[] = ['city', 'country'];
@@ -77,6 +77,12 @@ export class HttpService {
         addressParams
       ))
     );
+  }
+
+  public getCardByParam(searchString: string, param: 'name' | 'address'): Promise<IWritter[]>{
+    return param === 'name' ?
+      this.getCardByName(searchString) :
+      this.getCardByAddress(searchString);
   }
 
   public getCardByBook(book: string): Promise<IWritter[]> {

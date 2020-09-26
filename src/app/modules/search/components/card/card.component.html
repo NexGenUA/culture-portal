@@ -1,5 +1,5 @@
 <mat-card class="card">
-  
+
 	<mat-card-header class="card__header">
 	  <mat-card-title>{{ writerCard.surname }}</mat-card-title>
 	  <mat-card-subtitle>{{ writerCard.name }}</mat-card-subtitle>
@@ -9,7 +9,7 @@
 		  <span *ngIf="writerCard.deathDate"> - {{ writerCard.deathDate | date:"yyyy" }}</span>
 		</p>
   </mat-card-header>
-  
+
 	<div class="card__wrapper-img">
 		<a (click)="selectCard()">
 			<img mat-card-image
@@ -18,18 +18,18 @@
 				alt="{{ writerCard.gallery[0].alt }}">
 		</a>
   </div>
-  
+
 	<mat-card-content class="card__content">
 	  <p>
-		{{ writerCard.shortDescription }}
+		{{ writerCard.city }} ({{writerCard.country}})
 	  </p>
   </mat-card-content>
-  
+
 	<mat-card-actions>
 	  <button mat-raised-button color="accent"
 		  (click)="selectCard()">
 		  Подробней
 		</button>
   </mat-card-actions>
-  
+
 </mat-card>
