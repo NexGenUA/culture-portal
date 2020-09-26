@@ -1,6 +1,7 @@
-import { searchInstances, searchParametersArrays, firebaseURL } from '../../constants/constants';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+
+import { searchInstances, searchParametersArrays, firebaseURL } from '../../constants/constants';
 import { IWritter } from '../models/writer.model';
 
 @Injectable({providedIn: 'root'})

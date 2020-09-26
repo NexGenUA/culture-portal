@@ -1,12 +1,13 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
+import { constants, paths, searchInstances } from '../../../../constants/constants';
 import { IWritter } from '../../../../shared/models/writer.model';
 import { HttpService } from '../../../../shared/services/http.service';
-import { debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
-import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DetailedService } from '../../services/detailed.service';
-import { constants, paths, searchInstances } from 'src/app/constants/constants';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
