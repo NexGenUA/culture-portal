@@ -41,11 +41,21 @@ export class SearchComponent implements OnInit {
       )
     .subscribe(
       query => {
-        this.httpService
+
+        if (this.searchInstance === 'name') {
+          this.httpService
           .getCardByName(query)
           .then(writers => {
             this.writers = writers;
           });
+        } else {
+          this.httpService
+          .getCardByAddress(query)
+          .then(writers => {
+            this.writers = writers;
+          });
+        }
+
       }
     );
   }

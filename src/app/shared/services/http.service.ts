@@ -28,7 +28,6 @@ export class HttpService {
   }
 
   public getFullBase(): Promise<IWritter[]> {
-    console.log(this.caching);
     // get full writers base
     return this.caching();
   }
@@ -42,23 +41,41 @@ export class HttpService {
     });
   }
 
+  private filterOnParams = (
+    item: IWritter,
+    searchValue: string,
+    params: string[]): boolean => {
+      return params.some(
+          param => searchValue.includes(item[param].toLowerCase()) ||
+          item[param].toLowerCase().includes(searchValue)
+        );
+  }
+
   public getCardByName(searchStr): Promise<IWritter[]> {
     // get writer card by name independenly of order
     const searchReq: string = searchStr.toLowerCase();
-    function filterReq(item: IWritter, request: string): boolean {
-      const name: string = item.name.toLowerCase();
-      const surname = item.surname.toLowerCase();
-      const patronymic = item.patronymic.toLowerCase();
-      return (
-        request.includes(name) ||
-        request.includes(surname) ||
-        request.includes(patronymic) ||
-        (name + surname + patronymic).includes(searchReq)
-      );
-    }
+    const nameParams: string[] = ['name', 'surname'];
 
     return this.getFullBase().then((base) =>
-      base.filter((card) => filterReq(card, searchReq))
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchReq,
+        nameParams
+      ))
+    );
+  }
+
+  public getCardByAddress(searchStr): Promise<IWritter[]> {
+    // get writer card by name independenly of order
+    const searchReq: string = searchStr.toLowerCase();
+    const addressParams: string[] = ['city', 'country'];
+
+    return this.getFullBase().then((base) =>
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchReq,
+        addressParams
+      ))
     );
   }
 
