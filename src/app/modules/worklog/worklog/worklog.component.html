@@ -12,7 +12,7 @@
 <mat-card >
   <mat-card-content *ngFor="let scope of scopes; index as i">
     <mat-card-title>
-      {{scope.title}} {{scopesScores[i]}} ({{scopesMaxScores[i]}})
+      {{scope.title}} score: {{scopesScores[i]}} ({{scopesMaxScores[i]}})
     </mat-card-title>
     <app-scope [scope]='scope.items'></app-scope>
   </mat-card-content>
