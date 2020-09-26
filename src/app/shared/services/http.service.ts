@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { provideRoutes } from '@angular/router';
 import * as firebase from 'firebase';
+
+import { searchInstances, searchParametersArrays, firebaseURL } from '../../constants/constants';
 import { IWritter } from '../models/writer.model';
 
 @Injectable({providedIn: 'root'})
@@ -10,7 +11,7 @@ export class HttpService {
   constructor() {
     this.base = firebase
       .initializeApp({
-        databaseURL: 'https://writers-project-b9a49.firebaseio.com/',
+        databaseURL: firebaseURL,
       })
       .database();
   }
@@ -52,35 +53,27 @@ export class HttpService {
   }
 
   public getCardByName(searchStr: string): Promise<IWritter[]> {
-    // get writer card by name independenly of order
-    const searchReq: string = searchStr.toLowerCase();
-    const nameParams: string[] = ['name', 'surname'];
-
     return this.getFullBase().then((base) =>
       base.filter((card) => this.filterOnParams(
         card,
-        searchReq,
-        nameParams
+        searchStr.toLowerCase(),
+        searchParametersArrays.NAME
       ))
     );
   }
 
   public getCardByAddress(searchStr: string): Promise<IWritter[]> {
-    // get writer card by name independenly of order
-    const searchReq: string = searchStr.toLowerCase();
-    const addressParams: string[] = ['city', 'country'];
-
     return this.getFullBase().then((base) =>
       base.filter((card) => this.filterOnParams(
         card,
-        searchReq,
-        addressParams
+        searchStr.toLowerCase(),
+        searchParametersArrays.ADDRESS
       ))
     );
   }
 
-  public getCardByParam(searchString: string, param: 'name' | 'address'): Promise<IWritter[]>{
-    return param === 'name' ?
+  public getCardByParam(searchString: string, param: searchInstances): Promise<IWritter[]>{
+    return param === searchInstances.NAME ?
       this.getCardByName(searchString) :
       this.getCardByAddress(searchString);
   }
