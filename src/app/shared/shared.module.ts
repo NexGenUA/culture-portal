@@ -18,6 +18,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MglTimelineModule } from 'angular-mgl-timeline';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 @NgModule({
   declarations: [],
@@ -41,7 +45,9 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
     MatToolbarModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MglTimelineModule
+    MglTimelineModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   exports: [
     CommonModule,
@@ -63,7 +69,9 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
     MatToolbarModule,
     MatSidenavModule,
     MatProgressBarModule,
-    MglTimelineModule
+    MglTimelineModule,
+    MatFormFieldModule,
+    MatSelectModule
   ]
 })
 export class SharedModule { }
