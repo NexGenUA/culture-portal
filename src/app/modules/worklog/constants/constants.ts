@@ -10,12 +10,12 @@ export const enum SCOPES_TITLES {
 const MIN_SCOPE: IScopeItem[] = [
   {
     title: 'Main page + page with a list of authors + author\'s page (only pages with content without widgets)',
-    checked: false,
+    checked: true,
     score: 10
   },
   {
     title: 'Page with team members + page with worklog',
-    checked: false,
+    checked: true,
     score: 10
   },
   {
