@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { developersNames, SCOPES, SCOPES_TITLES, WORKLOG_DATA } from '../constants/constants';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatAccordion } from '@angular/material/expansion';
 
+import { developersNames, SCOPES, SCOPES_TITLES, WORKLOG_DATA } from '../constants/constants';
 import { IScopeItem } from '../models/scope-item.model';
 import { IWorklogItem } from '../models/worklog-item.model';
 
@@ -10,6 +11,8 @@ import { IWorklogItem } from '../models/worklog-item.model';
   styleUrls: ['./worklog.component.scss']
 })
 export class WorklogComponent implements OnInit {
+
+  @ViewChild(MatAccordion) accordion: MatAccordion;
 
   public tableData: {
     user: developersNames,
