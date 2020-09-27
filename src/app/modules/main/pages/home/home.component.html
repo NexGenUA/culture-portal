@@ -3,6 +3,7 @@
 		<h2 class="home__header">
 			Культурный портал
 		</h2>
+
 		<article>
 			Литература всегда играла важную роль в жизни народов
 			и могла быть для общества как лучшим другом,
@@ -23,11 +24,9 @@
 	</section>
 
 	<section class="home__author" *ngIf="randomCard">
-
 		<h2>Автор дня:</h2>
 
 		<div class="home__card">
-		
 			<img
 				class="home__image"
 				src="{{ randomCard.gallery[0].img | linkMap}}"
@@ -44,14 +43,9 @@
 				</p>
 				<button mat-raised-button color="accent" class="home__btn"
 					(click)="goToSearch()">
-					Узнать больше
+					Узнать о писателях больше
 				</button>
-
-
 			</div>
-		
 		</div>
-		
-
 	</section>
-
+</div>

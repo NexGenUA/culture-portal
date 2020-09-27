@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { IEntry } from 'src/app/shared/models/entry.model';
-import { ITimelineItem, IVideo } from 'src/app/shared/models/writer.model';
+import { ITimelineItem, IVideo, IWritter } from 'src/app/shared/models/writer.model';
+import { HttpService } from 'src/app/shared/services/http.service';
 import { NavigateService } from 'src/app/shared/services/navigate.service';
-import { DetailedService } from '../../services/detailed.service';
 import { ModalComponent } from '../modal/modal.component';
 
 @Component({
@@ -12,6 +13,8 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./detailed.component.scss']
 })
 export class DetailedComponent implements OnInit {
+
+  public writer: IWritter;
 
   public panelTimelineOpenState = false;
   public panelGalleryOpenState = false;
@@ -28,21 +31,29 @@ export class DetailedComponent implements OnInit {
 
   public entries: IEntry[] = [];
 
+  private routeParams = 'id';
 
-  constructor(public detailedService: DetailedService,
-              private navigateService: NavigateService,
-              private dialog: MatDialog) { }
+  constructor(
+    private navigateService: NavigateService,
+    private dialog: MatDialog,
+    private httpService: HttpService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.detailedService.selectedCard.timeline
-      .forEach((fact: ITimelineItem) => this.entries
-        .push(
-          {
-            header: fact.year,
-            content: fact.event
-          }
-        )
-      );
+    this.httpService.getCardByRoute(this.activatedRoute.snapshot.params[this.routeParams])
+    .then(writer => {
+      this.writer = writer;
+      return writer;
+    })
+    .then(writer => {
+      writer.timeline.forEach((fact: ITimelineItem) =>
+      this.entries.push(
+        {
+          header: fact.year,
+          content: fact.event
+        }
+      ));
+    });
   }
 
   public returnToMain(): void {

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { paths } from 'src/app/constants/constants';
 import { IWritter } from 'src/app/shared/models/writer.model';
 import { HttpService } from 'src/app/shared/services/http.service';
 import { NavigateService } from 'src/app/shared/services/navigate.service';
@@ -22,6 +23,6 @@ export class HomeComponent implements OnInit {
   }
 
   public goToSearch(): void {
-    this.navigateService.navigateTo(['/search']);
+    this.navigateService.navigateTo([paths.SEARCH]);
   }
 }

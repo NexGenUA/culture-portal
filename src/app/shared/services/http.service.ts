@@ -43,6 +43,15 @@ export class HttpService {
     });
   }
 
+  public getCardByRoute(route: string): Promise<IWritter> {
+    // get writer card by routing ID
+    return this.getFullBase().then((base) => {
+      let searchedCard: IWritter;
+      base.forEach((card) => (card.surname === route ? (searchedCard = card) : null));
+      return searchedCard;
+    });
+  }
+
   private filterOnParams = (
     item: IWritter,
     searchValue: string,

@@ -12,8 +12,6 @@ export class ModalComponent implements OnInit {
 
   video: IVideo;
 
-  newLink: string;
-
   constructor(private dialogRef: MatDialogRef<ModalComponent>,
               @Inject(MAT_DIALOG_DATA) data: IVideo,
               private sanitizer: DomSanitizer) {
