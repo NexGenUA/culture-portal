@@ -1,0 +1,19 @@
+<mat-card class="card" [class.left]="i % 2">
+  <mat-card-header>
+    <h2 class="h2">
+      {{ 'TEAM.' + teamMember.nick + '.name' | translate }}
+    </h2>
+  </mat-card-header>
+  <hr class="hr">
+  <div class="content">
+    <img mat-card-image [src]="teamMember.img" class="card-img">
+    <mat-card-content class="card-content">
+      <mat-list>
+        <mat-list-item class="item">
+          Role: {{ 'TEAM.' + teamMember.nick + '.role' | translate }}
+        </mat-list-item>
+        <a class="item" mat-list-item [href]="'https://' + teamMember.github">{{ teamMember.github }}</a>
+      </mat-list>
+    </mat-card-content>
+  </div>
+</mat-card>

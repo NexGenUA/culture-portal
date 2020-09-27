@@ -4,18 +4,33 @@
     "SWITCH_BUTTON_TEXT": "Switch theme"
   },
   "HOME": {
-
   },
   "SEARCH": {
-
   },
   "WORKLOG": {
-
   },
   "TEAM": {
-
+    "nexgenua": {
+      "name": "Valentyn Stepovenko",
+      "role": "Architecture of project, deployment, animation, team page"
+    },
+    "AlexanderFraltsov": {
+      "name": "Alexander Fraltsov",
+      "role": "The worklog page. Page about writers, collecting information, generating json, interfaces"
+    },
+    "dinosavr": {
+      "name": "Alexandr Sidorov",
+      "role": "Application design. Styleguide page"
+    },
+    "Raccoon2508": {
+      "name": "Mikita Rudnik",
+      "role": "Application services"
+    },
+    "pavelasadchy": {
+      "name": "Pavel Asadchy",
+      "role": "Pages: home, item, detailed"
+    }
   },
   "STYLEGUIDE": {
-
   }
 }

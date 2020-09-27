@@ -1,1 +1,5 @@
-<p>team works!</p>
+<app-team-member-card
+  *ngFor="let member of members; index as i"
+  [teamMember]="member"
+  [i]="i"
+></app-team-member-card>
