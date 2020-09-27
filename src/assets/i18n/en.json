@@ -32,5 +32,9 @@
     }
   },
   "STYLEGUIDE": {
+  },
+  "NOT_FOUND": {
+    "TEXT": "page not found...",
+    "TEXT_BUTTON": "Go to home... page"
   }
 }
