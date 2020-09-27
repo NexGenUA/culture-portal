@@ -1,0 +1,16 @@
+<div class="modal">
+	<mat-icon
+		class="modal__close"
+		(click)="closeModal()">
+  	close
+	</mat-icon>
+
+	<iframe
+		[src]="generateSafeUrl()"
+		width="640"
+		height="360"
+		frameborder="0"
+		allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+		allowfullscreen>
+	</iframe>
+</div>

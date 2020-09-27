@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { IEntry } from 'src/app/shared/models/entry.model';
-import { ITimelineItem } from 'src/app/shared/models/writer.model';
+import { ITimelineItem, IVideo } from 'src/app/shared/models/writer.model';
 import { NavigateService } from 'src/app/shared/services/navigate.service';
 import { DetailedService } from '../../services/detailed.service';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-detailed',
@@ -28,7 +30,8 @@ export class DetailedComponent implements OnInit {
 
 
   constructor(public detailedService: DetailedService,
-              private navigateService: NavigateService) { }
+              private navigateService: NavigateService,
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.detailedService.selectedCard.timeline
@@ -56,6 +59,17 @@ export class DetailedComponent implements OnInit {
     if (!this.expandEnabled) {
       event.stopPropagation();
     }
+  }
+
+  public openDialog(video: IVideo): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = video;
+
+    this.dialog.open(ModalComponent, dialogConfig);
   }
 
 }

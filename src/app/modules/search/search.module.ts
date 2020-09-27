@@ -5,12 +5,14 @@ import { CardComponent } from './components/card/card.component';
 import { DetailedComponent } from './components/detailed/detailed.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchRoutingModule } from './search-routing.module';
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
     SearchComponent,
     CardComponent,
-    DetailedComponent
+    DetailedComponent,
+    ModalComponent
   ],
   imports: [
     SharedModule,

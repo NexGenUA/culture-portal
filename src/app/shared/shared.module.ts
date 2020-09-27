@@ -21,6 +21,7 @@ import { MglTimelineModule } from 'angular-mgl-timeline';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { LinkMapPipe } from './pipes/link-map.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -48,7 +49,8 @@ import { LinkMapPipe } from './pipes/link-map.pipe';
     MatProgressBarModule,
     MglTimelineModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
@@ -73,7 +75,8 @@ import { LinkMapPipe } from './pipes/link-map.pipe';
     MglTimelineModule,
     MatFormFieldModule,
     MatSelectModule,
-    LinkMapPipe
+    LinkMapPipe,
+    MatDialogModule,
   ]
 })
 export class SharedModule { }
