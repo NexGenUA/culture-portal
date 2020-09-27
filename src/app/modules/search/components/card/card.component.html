@@ -14,7 +14,7 @@
 		<a (click)="selectCard()">
 			<img mat-card-image
 				class="card__image"
-				src="{{ writerCard.gallery[0].img }}"
+				src="{{ writerCard.gallery[0].img | linkMap}}"
 				alt="{{ writerCard.gallery[0].alt }}">
 		</a>
   </div>
