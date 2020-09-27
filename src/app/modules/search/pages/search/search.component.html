@@ -12,8 +12,7 @@
 <ul class="main">
   <li class="main__item" *ngFor="let writer of writers">
     <app-card
-      [writerCard]="writer"
-      (selectedCard)="selectItem($event)">
+      [writerCard]="writer">
     </app-card>
   </li>
 </ul>

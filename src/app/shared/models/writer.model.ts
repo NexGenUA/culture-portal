@@ -13,7 +13,7 @@ interface IImage {
   alt: string;
 }
 
-interface IVideo {
+export interface IVideo {
   link: string;
   description: string;
 }

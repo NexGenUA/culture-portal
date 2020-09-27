@@ -4,10 +4,9 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 
-import { constants, paths, searchInstances } from '../../../../constants/constants';
+import { constants, searchInstances } from '../../../../constants/constants';
 import { IWritter } from '../../../../shared/models/writer.model';
 import { HttpService } from '../../../../shared/services/http.service';
-import { DetailedService } from '../../services/detailed.service';
 
 @Component({
   selector: 'app-search',
@@ -21,11 +20,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public searchString: Subscription;
   public writers: IWritter[] = [];
 
-  constructor(
-    private httpService: HttpService,
-    private detailedService: DetailedService,
-    private router: Router
-  ) { }
+  constructor(private httpService: HttpService) { }
 
   public ngOnInit(): void {
     this.form = new FormGroup({
@@ -67,10 +62,5 @@ export class SearchComponent implements OnInit, OnDestroy {
     } else {
       this.searchInstance = searchInstances.NAME;
     }
-  }
-
-  public selectItem(clickedCard: IWritter): void {
-    this.detailedService.initDetailedCard(clickedCard);
-    this.router.navigate([paths.SEARCH, this.detailedService.selectedCard.surname]);
   }
 }
