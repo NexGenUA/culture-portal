@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+
+import { searchInstances, searchParametersArrays, firebaseURL } from '../../constants/constants';
 import { IWritter } from '../models/writer.model';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class HttpService {
   public base;
   public baseCache;
   constructor() {
     this.base = firebase
       .initializeApp({
-        databaseURL: 'https://writers-project-b9a49.firebaseio.com/',
+        databaseURL: firebaseURL,
       })
       .database();
   }
@@ -40,24 +42,40 @@ export class HttpService {
     });
   }
 
-  public getCardByName(searchStr): Promise<IWritter[]> {
-    // get writer card by name independenly of order
-    const searchReq: string = searchStr.toLowerCase();
-    function filterReq(item: IWritter, request: string): boolean {
-      const name: string = item.name.toLowerCase();
-      const surname = item.surname.toLowerCase();
-      const patronymic = item.patronymic.toLowerCase();
-      return (
-        request.includes(name) ||
-        request.includes(surname) ||
-        request.includes(patronymic) ||
-        (name + surname + patronymic).includes(searchReq)
-      );
-    }
+  private filterOnParams = (
+    item: IWritter,
+    searchValue: string,
+    params: string[]): boolean => {
+      return params.some(
+          param => searchValue.includes(item[param].toLowerCase()) ||
+          item[param].toLowerCase().includes(searchValue)
+        );
+  }
 
+  public getCardByName(searchStr: string): Promise<IWritter[]> {
     return this.getFullBase().then((base) =>
-      base.filter((card) => filterReq(card, searchReq))
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchStr.toLowerCase(),
+        searchParametersArrays.NAME
+      ))
     );
+  }
+
+  public getCardByAddress(searchStr: string): Promise<IWritter[]> {
+    return this.getFullBase().then((base) =>
+      base.filter((card) => this.filterOnParams(
+        card,
+        searchStr.toLowerCase(),
+        searchParametersArrays.ADDRESS
+      ))
+    );
+  }
+
+  public getCardByParam(searchString: string, param: searchInstances): Promise<IWritter[]>{
+    return param === searchInstances.NAME ?
+      this.getCardByName(searchString) :
+      this.getCardByAddress(searchString);
   }
 
   public getCardByBook(book: string): Promise<IWritter[]> {

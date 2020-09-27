@@ -1,4 +1,4 @@
-interface ITimelineItem {
+export interface ITimelineItem {
   year: number;
   event: string;
 }
@@ -25,6 +25,8 @@ export interface IWritter {
   patronymic?: string;
   birthdate: string;
   deathDate: string;
+  city?: string;
+  country?: string;
   shortDescription: string;
   timeline: ITimelineItem[];
   books: IBook[];
