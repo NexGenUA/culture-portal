@@ -18,7 +18,6 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public form: FormGroup;
   public searchInstance: searchInstances = searchInstances.NAME;
-  public value = '';
   public searchString: Subscription;
   public writers: IWritter[] = [];
 
@@ -30,14 +29,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.form = new FormGroup({
-      searchString: new FormControl('searchString')
+      searchValue: new FormControl('')
     });
 
     this.httpService.getFullBase().then(writers => {
       this.writers = writers;
     });
 
-    this.searchString = this.form.get('searchString').valueChanges
+    this.searchString = this.form.get('searchValue').valueChanges
     .pipe(debounceTime(constants.SEARCH_DEBOUNCE_TIME))
     .subscribe(
       query => {
@@ -52,6 +51,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void {
     this.searchString.unsubscribe();
+  }
+
+  public get searchValue(): string {
+    return this.form.get('searchValue').value;
+  }
+
+  public clearValue(): void {
+    this.form.setValue({searchValue: ''});
   }
 
   public toggleSearchInstance = (): void => {
