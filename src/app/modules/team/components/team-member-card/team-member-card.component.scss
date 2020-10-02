@@ -1,0 +1,69 @@
+:host {
+  width: 60%;
+
+  @media screen and (max-width: 780px) {
+    width: auto;
+
+    .item {
+      font-size: 12px;
+    }
+
+    .card, .card.left {
+      .h2 {
+        margin-left: 0;
+      }
+
+      .card-img {
+        margin: 10px auto;
+      }
+
+      .content {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.card {
+  margin-bottom: 10px;
+  width: inherit;
+
+  .card-img {
+    width: calc(10vw + 100px);
+    height: calc(10vw + 100px);
+    margin: 10px 0;
+  }
+
+
+  .hr {
+    margin-bottom: 20px;
+  }
+
+  .card-content {
+    width: auto;
+    height: auto;
+  }
+
+  .content {
+    display: flex;
+  }
+
+  &.left {
+    margin-left: auto;
+
+    .content {
+      flex-direction: row-reverse;
+    }
+
+    .h2 {
+      margin-left: auto;
+    }
+  }
+
+  .item {
+    height: auto;
+    margin-bottom: 10px;
+  }
+}
+
+

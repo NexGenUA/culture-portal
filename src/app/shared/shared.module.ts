@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -15,11 +16,21 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MglTimelineModule } from 'angular-mgl-timeline';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+import { LinkMapPipe } from './pipes/link-map.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+
+
 
 @NgModule({
-  declarations: [],
+  declarations: [LinkMapPipe],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatCardModule,
@@ -35,9 +46,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSlideToggleModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatProgressBarModule,
+    MglTimelineModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDialogModule
   ],
   exports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonToggleModule,
     MatButtonModule,
     MatCardModule,
@@ -53,6 +71,12 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSlideToggleModule,
     MatToolbarModule,
     MatSidenavModule,
+    MatProgressBarModule,
+    MglTimelineModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    LinkMapPipe,
+    MatDialogModule,
   ]
 })
 export class SharedModule { }

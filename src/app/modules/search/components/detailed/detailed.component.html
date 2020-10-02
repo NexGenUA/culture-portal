@@ -1,0 +1,164 @@
+<mat-card
+  class="detailed"
+  *ngIf="writer">
+
+  <mat-icon
+    class="detailed__close"
+    (click)="returnToMain()">
+      close
+  </mat-icon>
+
+  <div class="detailed__file">
+    <div class="detailed__img-box">
+      <img mat-card-image
+        src="{{ writer.gallery[0].img }}"
+        alt="{{ writer.gallery[0].alt }}">
+    </div>
+    
+    <div class="detailed__info">
+			<mat-card-title class="detailed__title">
+				{{ writer.surname }}
+        {{ writer.name }}
+        {{ writer.patronymic }}
+			</mat-card-title>
+
+      <div class="detailed__facts">
+        <div class="detailed__dates">
+          <div class="detailed__item">
+            <mat-card-subtitle class="detailed__subtitle">
+              Дата рождения:
+            </mat-card-subtitle>
+            <p>
+              {{ writer.birthdate | date:"longDate":'ru' }}
+            </p>    
+          </div>
+  
+          <div class="detailed__item" *ngIf="writer.deathDate">
+            <mat-card-subtitle class="detailed__subtitle">Дата смерти:</mat-card-subtitle>
+            <p>
+              {{ writer.deathDate | date:"longDate":'ru' }}	  
+            </p>    
+          </div>  
+        </div>
+
+        <div class="detailed__item">
+          <mat-card-subtitle class="detailed__subtitle">
+            Литературные произведения:
+          </mat-card-subtitle>
+          <ul class="detailed__books-list">
+            <li
+              class="detailed__book"
+              *ngFor="let book of writer.books">
+              {{ book.title }}, {{ book.year }}
+            </li>
+          </ul>    
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detailed__item">
+    <mat-card-subtitle class="detailed__subtitle">
+      Об авторе:
+    </mat-card-subtitle>
+    <p>
+      {{ writer.shortDescription }}
+    </p>
+  </div>
+
+  <mat-accordion *ngIf="writer.timeline.length">
+    <mat-expansion-panel (opened)="panelTimelineOpenState = true"
+                         (closed)="panelTimelineOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Значимые события
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelTimelineOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mgl-timeline
+        [toggle]="toggle"
+        [alternate]="alternate"
+        [side]="side">
+
+        <mgl-timeline-entry
+          *ngFor="let entry of entries">
+
+            <mgl-timeline-entry-header
+              (click)="onHeaderClick($event)">
+              {{ entry.header }}
+            </mgl-timeline-entry-header>
+
+            <mgl-timeline-entry-content
+              [expandAnimationTiming]="contentAnimation ? '200ms ease' : '0ms'"
+              [collapseAnimationTiming]="contentAnimation ? '100ms ease' : '0ms'">
+              {{ entry.content }}
+            </mgl-timeline-entry-content>
+            
+            <mgl-timeline-entry-dot
+              [size]="size"
+              style="text-align: center; background-color: lightblue; color: darkblue"
+              (click)="onDotClick($event)"
+              [expandAnimationTiming]="dotAnimation ? '200ms ease' : '0ms'"
+              [collapseAnimationTiming]="dotAnimation ? '100ms ease' : '0ms'">              
+            </mgl-timeline-entry-dot>
+        </mgl-timeline-entry>
+      </mgl-timeline>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion *ngIf="writer.gallery">
+    <mat-expansion-panel (opened)="panelGalleryOpenState = true"
+                         (closed)="panelGalleryOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Галерея
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelGalleryOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <ul class="detailed__gallery">
+        <li
+          class="detailed__photo"
+          *ngFor="let photo of writer.gallery">
+          <a href="{{ photo.img }}" target="_blank">
+            <img src="{{ photo.img }}" alt="{{ photo.alt }}">
+          </a>
+        </li>
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-accordion *ngIf="writer.videos">
+    <mat-expansion-panel (opened)="panelVideoOpenState = true"
+                         (closed)="panelVideoOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Видео-галерея
+        </mat-panel-title>
+        <mat-panel-description>
+          {{panelVideoOpenState ? 'Закрыть' : 'Развернуть'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-list role="list" class="detailed__video-gallery">
+        <mat-list-item role="listitem"
+          class="detailed__video"
+          *ngFor="let video of writer.videos">
+          <button mat-button (click)="openDialog(video)">
+            {{ video.description }}
+          </button>
+        </mat-list-item>
+      </mat-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <mat-card-actions>
+	  <button mat-raised-button color="accent"
+		  (click)="returnToMain()">
+		  Закрыть
+		</button>
+	</mat-card-actions>
+</mat-card>

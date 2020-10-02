@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card {
+  padding: .5rem 0;
+}
+
+mat-accordion {
+  padding-bottom: 0.5rem;
+}

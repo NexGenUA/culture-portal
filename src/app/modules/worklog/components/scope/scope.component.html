@@ -1,0 +1,7 @@
+<div *ngFor="let item of scope">
+  <mat-pseudo-checkbox
+    [disabled]="true"
+    [state]="item.checked ? 'checked': 'unchecked'"
+  >Disabled</mat-pseudo-checkbox>
+   - ({{item.score}}) - {{item.title}}
+</div>

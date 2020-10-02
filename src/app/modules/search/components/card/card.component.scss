@@ -1,0 +1,23 @@
+.card {
+	width: 300px;
+
+	&__header {
+		justify-content: space-between;
+	}
+
+	&__wrapper-img {
+		height: 200px;
+		margin: 0 -16px 16px -16px;
+		overflow: hidden;
+	}
+
+	&__wrapper-img a {
+		cursor: pointer;
+	}
+
+	&__content p {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap
+	}
+}

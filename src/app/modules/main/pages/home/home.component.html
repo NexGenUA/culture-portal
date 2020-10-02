@@ -1,0 +1,51 @@
+<div class="home">
+	<section class="home__description">
+		<h2 class="home__header">
+			Культурный портал
+		</h2>
+
+		<article>
+			Литература всегда играла важную роль в жизни народов
+			и могла быть для общества как лучшим другом,
+			так и самым жестоким критиком. И конечно литература
+			всегда была отражением общественной жизни и являлась
+			одним из двигателей культурологического процесса.
+			Художественная литература способна существенно влиять
+			на массовое сознание, создавать ориентиры для развития
+			людей. И если литература действительно учит прекрасному,
+			учит распознавать добро и зло, представляя собой суть мыслей
+			и размышлений лучших умов человечества, то сегодня она
+			представляется одним из наиболее эффективных средств,
+			которые могут сделать этот мир лучше, добрее.
+			Литература столетиями играла важную роль в культуре Беларуси
+			и стала одним из факторов, пробудивших национальное сознание
+			белорусского народа.
+		</article>
+	</section>
+
+	<section class="home__author" *ngIf="randomCard">
+		<h2>Автор дня:</h2>
+
+		<div class="home__card">
+			<img
+				class="home__image"
+				src="{{ randomCard.gallery[0].img | linkMap}}"
+				alt="{{ randomCard.gallery[0].alt }}">
+		
+			<div class="home__content">
+				<h3 class="home__name">
+					{{ randomCard.name }} {{ randomCard.surname }}
+				</h3>
+				<p>
+					<span *ngIf="!randomCard.deathDate">род. </span>
+					<span>{{ randomCard.birthdate | date:"yyyy" }}</span>
+					<span *ngIf="randomCard.deathDate"> - {{ randomCard.deathDate | date:"yyyy" }}</span>
+				</p>
+				<button mat-raised-button color="accent" class="home__btn"
+					(click)="goToSearch()">
+					Узнать о писателях больше
+				</button>
+			</div>
+		</div>
+	</section>
+</div>
