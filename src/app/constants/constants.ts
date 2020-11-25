@@ -14,7 +14,7 @@ export const searchParametersArrays: {[key: string]: string[]} = {
   ADDRESS: ['city', 'country']
 };
 
-export const firebaseURL = 'https://writers-project-b9a49.firebaseio.com/';
+export const firebaseURL = 'https://client-a0142.firebaseio.com/';
 
 export enum paths {
   WRITERS = 'writers',
